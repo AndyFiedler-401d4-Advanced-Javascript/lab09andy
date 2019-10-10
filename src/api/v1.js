@@ -41,6 +41,7 @@ function handleGetAll(request,response,next) {
         results: data,
       };
       response.status(200).json(output);
+      Q.publish('database', 'read', output)
     })
     .catch( next );
 }
